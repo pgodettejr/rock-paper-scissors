@@ -5,7 +5,7 @@ function getComputerChoice() {
 // Check back on this first function later to see if it actually works in Console. Is String.random a thing?
 
 function playRound(playerSelection, computerSelection) {
-// My code for this goes here. Can do "if else" but that is very long. Looking for easier, shorter, faster code.
+// Looking for easier, shorter, faster code.
     if(playerSelection === "rock" && computerSelection === "paper" ) {
         return String("You Lose! Paper beats Rock");
     } else if(playerSelection === "rock" && computerSelection === "scissors") {
@@ -29,3 +29,5 @@ function playRound(playerSelection, computerSelection) {
 
 const playerSelection = "rock";
 const computerSelection = getComputerChoice();
+
+console.log(playRound(playerSelection, computerSelection));

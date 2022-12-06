@@ -1,8 +1,16 @@
 function getComputerChoice() {
-    return String("rock", "paper", "scissors");
+    const choices = ["rock", "paper", "scissors"];
+    let choice = choices[Math.floor(Math.random() * choices.length)];
+    return choice
 }
 
-// Check back on this first function later to see if it actually works in Console. Is String.random a thing?
+/* First function picks "rock" every time when it should be random. 
+   String.random is NOT a function, therefore is not a solution. 
+   random function only works with numbers, even if you try to 
+   group strings in let/var (not a solution) */
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
 
 function playRound(playerSelection, computerSelection) {
 // Looking for easier, shorter, faster code.
@@ -24,10 +32,10 @@ function playRound(playerSelection, computerSelection) {
         return String("You Win! Scissors beats Paper")
     } else if(playerSelection === "scissors" && computerSelection === "scissors") {
         return String("Draw!")
-
+    } else {
+        return String("There are no other possible scenarios. How did you get here?")
+    }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
 
 console.log(playRound(playerSelection, computerSelection));

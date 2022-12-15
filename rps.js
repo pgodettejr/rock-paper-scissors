@@ -1,15 +1,15 @@
+function playerSelection() {
+    let playerChoice = prompt("Please enter a choice: rock, paper, scissors").toUpperCase();
+    return playerChoice
+}
+
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
     let choice = choices[Math.floor(Math.random() * choices.length)];
     return choice
 }
 
-/* First function picks "rock" every time when it should be random. 
-   String.random is NOT a function, therefore is not a solution. 
-   random function only works with numbers, even if you try to 
-   group strings in let/var (not a solution) */
-
-const playerSelection = "rock";
+// const playerSelection = "rock";
 const computerSelection = getComputerChoice();
 
 function playRound(playerSelection, computerSelection) {
@@ -37,5 +37,16 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function game() {
+    for (let i = 0; i < 5; i++) {
+        playRound();
+    }   
+}
+// Suna: you are really close. Look at arguments you passed to playRound function inside game()
 
-console.log(playRound(playerSelection, computerSelection));
+// +Eduardo06sp, Suna, TheOne14
+
+/* No arguments at all doesn't work. I think it's the same as when the arguments from that function 
+are in there */
+
+// console.log(game);

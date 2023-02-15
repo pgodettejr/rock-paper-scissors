@@ -57,9 +57,4 @@ function game() {
     }   
 }
 
-
-// Suna: you are really close. Look at arguments you passed to playRound function inside game()
-
-// +Eduardo06sp, Suna, TheOne14
-
 game();

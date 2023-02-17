@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title> <!-- We would defer up here if the JS file was in the head -->
+    <link rel="stylesheet" href="rps.css">
 </head>
 
 <body>
-    <script src="rps.js"></script>
+    <div id="game-info">
+        <p id="result"></p>
+        <p id="score"></p>
+        <p id="winner"></p>
+    </div>
+
+    <button id="btnR">Rock</button>
+    <button id="btnP">Paper</button>
+    <button id="btnS">Scissors</button>
+
+    <script src="rps.js"></script> <!-- Don't need to defer since JS file is at the bottom of HTML -->
 </body>
 
 </html>

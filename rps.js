@@ -1,3 +1,29 @@
+const gameInfo = document.querySelector('#game-info');
+const result = document.querySelector('#result');
+const score = document.querySelector('#score');
+const winner = document.querySelector('#winner');
+
+let computerScore = 0;
+let playerScore = 0;
+
+// Clickable buttons that initiate playing a round of RPS
+const btnR = document.querySelector('#btnR');
+btnR.addEventListener('click', () => {
+  playRound("btnR");
+});
+
+const btnP = document.querySelector('#btnP');
+btnP.addEventListener('click', () => {
+  playRound("btnP");
+});
+
+const btnS = document.querySelector('#btnS');
+btnS.addEventListener('click', () => {
+  playRound("btnS");
+});
+
+const resultsDiv = document.querySelector('#results');
+
 // Player's choice
 function getPlayerChoice() {
     let playerChoice = prompt("Please enter a choice: Rock, Paper, Scissors").toLowerCase();
@@ -11,38 +37,51 @@ function getComputerChoice() {
     return choice
 }
 
-let computerScore = 0;
-let playerScore = 0;
+// Plays a round of RPS, displays scores & shows who wins/loses. Draw statement isn't triggering at all
+function playRound(playerSelection) {
+    const computerSelection = getComputerChoice();
+    let roundResult = '';
 
-// Plays a round of RPS & shows who wins/loses
-function playRound(playerSelection, computerSelection) {
     if(playerSelection === computerSelection) {
-        console.log("Draw");
-    } else if(playerSelection === "rock" && computerSelection === "paper") {
+        roundResult = "Draw";
+    } else if(playerSelection === "btnR" && computerSelection === "paper") {
         computerScore++;
-        console.log("You Lose. Paper beats Rock");
-    } else if(playerSelection === "rock" && computerSelection === "scissors") {
+        roundResult = "You Lose. Paper beats Rock";
+    } else if(playerSelection === "btnR" && computerSelection === "scissors") {
         playerScore++;
-        console.log("You Win! Rock beats Scissors");
-    } else if(playerSelection === "paper" && computerSelection === "scissors") {
+        roundResult = "You Win! Rock beats Scissors";
+    } else if(playerSelection === "btnP" && computerSelection === "scissors") {
         computerScore++;
-        console.log("You Lose. Scissors beats Paper");
-    } else if(playerSelection === "paper" && computerSelection === "rock") {
+        roundResult = "You Lose. Scissors beats Paper";
+    } else if(playerSelection === "btnP" && computerSelection === "rock") {
         playerScore++;
-        console.log("You Win! Paper beats Rock");
-    } else if(playerSelection === "scissors" && computerSelection === "rock") {
+        roundResult = "You Win! Paper beats Rock";
+    } else if(playerSelection === "btnS" && computerSelection === "rock") {
         computerScore++;
-        console.log("You Lose. Rock beats Scissors");
-    } else if(playerSelection === "scissors" && computerSelection === "paper") {
+        roundResult = "You Lose. Rock beats Scissors";
+    } else if(playerSelection === "btnS" && computerSelection === "paper") {
         playerScore++;
-        console.log("You Win! Scissors beats Paper");
+        roundResult = "You Win! Scissors beats Paper";
     } else {
-        console.log("There are no other possible scenarios. How did you get here?");
+        roundResult = "There are no other possible scenarios. How did you get here?";
+    }
+
+    result.textContent = `Result: ${roundResult}`;
+    score.textContent = `Score: Player ${playerScore} - ${computerScore} Computer`;
+
+    if(playerScore === 5) {
+        winner.textContent = "You Win!";
+        disableButtons();
+    } else if(computerScore === 5) {
+        winner.textContent = "You Lose";
+        disableButtons();
     }
 }
 
-// Game itself that plays rounds until someone wins 5 rounds
-function game() {
+console.log(`Player Score: ${playerScore}\nComputer Score: ${computerScore}`);
+
+// Game itself that plays rounds until someone wins 5 rounds. Do we still need the loop even after UI is added?
+/* function game() {
     for (let i = 0; i < 12; i++) {
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
@@ -57,4 +96,4 @@ function game() {
     }   
 }
 
-game();
+game(); */

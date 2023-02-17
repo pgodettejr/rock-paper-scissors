@@ -1,0 +1,17 @@
+#game-info {
+    margin: 20px 0;
+    font-size: 20px;
+  }
+  
+  #result {
+    margin: 0;
+  }
+  
+  #score {
+    margin: 10px 0;
+  }
+  
+  #winner {
+    font-weight: bold;
+  }
+  
